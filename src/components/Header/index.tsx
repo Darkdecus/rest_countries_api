@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
 import ThemeButton from "../ThemeButton";
 
@@ -16,15 +16,21 @@ const Bar = styled.header`
 const Caption = styled.h1`
   @media only screen and (min-width: 300px) {
     font-size: 1rem;
-    color: ${(props) => props.theme.color};
+    color: inherit;
   }
 `;
 
-function Header() {
+function Header({
+  theme,
+  toggleTheme,
+}: {
+  theme: "dark" | "light";
+  toggleTheme: MouseEventHandler<HTMLButtonElement>;
+}) {
   return (
     <Bar>
       <Caption>Where in the world?</Caption>
-      <ThemeButton />
+      <ThemeButton theme={theme} onClick={toggleTheme} />
     </Bar>
   );
 }

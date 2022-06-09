@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 
@@ -6,6 +6,7 @@ const AppWrapper = styled.div`
   height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme.bg};
+  color: ${(props) => props.theme.color};
 `;
 
 const darkTheme = {
@@ -20,10 +21,14 @@ const lightTheme = {
 };
 
 function App() {
+  const [theme, setTheme] = useState<"dark" | "light">("light");
+  const toggleTheme = () =>
+    setTheme((state) => (state === "dark" ? "light" : "dark"));
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <AppWrapper>
-        <Header />
+        <Header theme={theme} toggleTheme={toggleTheme} />
         {/* <ContentArea /> */}
       </AppWrapper>
     </ThemeProvider>
