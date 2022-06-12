@@ -6,6 +6,7 @@ const Button = styled.button`
   background-color: inherit;
   border: none;
   color: inherit;
+  font-weight: 300;
 `;
 
 function ThemeButton(
