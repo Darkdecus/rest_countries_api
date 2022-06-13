@@ -118,7 +118,11 @@ function DetailedView({ country, setCountry }: IProps) {
             <div>
               <CountryInfoText
                 label="Native Name"
-                value={country?.name?.nativeName?.deu.official}
+                value={
+                  country?.name?.nativeName[
+                    Object.keys(country?.name?.nativeName)[0]
+                  ].official
+                }
               />
               <CountryInfoText label="Population" value={country?.population} />
               <CountryInfoText label="Region" value={country?.region} />
