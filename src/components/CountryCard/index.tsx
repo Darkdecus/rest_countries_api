@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import CountryInfoText from "../CountryInfoText";
+import CountryName from "../CountryName";
+import Flag from "../Flag";
 
 interface IProps {
   name: string;
@@ -20,12 +23,12 @@ const Card = styled.article.attrs((props: { flag: string }) => ({
   box-shadow: var(--box-shadow);
   cursor: pointer;
 
-  & > div:nth-child(1) {
+  /* & > div:nth-child(1) {
     background: ${(props) => `url(${props.flag}) no-repeat center`};
     background-size: cover;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-  }
+  } */
 
   & > div:nth-child(2) {
     padding: 0.5rem;
@@ -41,29 +44,15 @@ const Card = styled.article.attrs((props: { flag: string }) => ({
   }
 `;
 
-const Name = styled.h2``;
-
-const Label = styled.span`
-  font-weight: 500;
-`;
-
-const Info = styled.span``;
-
 function CountryCard({ name, flag, region, population, capital }: IProps) {
   return (
     <Card flag={flag}>
-      <div title={`National flag of ${name}`}></div>
+      <Flag flag={flag} title={`National flag of ${name}`} />
       <div>
-        <Name>{name}</Name>
-        <p>
-          <Label>Population</Label>: <Info>{population}</Info>
-        </p>
-        <p>
-          <Label>Region</Label>: <Info>{region}</Info>
-        </p>
-        <p>
-          <Label>Capital</Label>: <Info>{capital}</Info>
-        </p>
+        <CountryName>{name}</CountryName>
+        <CountryInfoText label="Population" value={population} />
+        <CountryInfoText label="Region" value={region} />
+        <CountryInfoText label="Capital" value={capital} />
       </div>
     </Card>
   );
