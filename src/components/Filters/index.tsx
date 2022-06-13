@@ -56,7 +56,7 @@ function Filters(props: IProps) {
     >
       <Option>Filter by Region</Option>
       <Option value={"Africa"}>Africa</Option>
-      <Option value={"America"}>America</Option>
+      <Option value={"Americas"}>America</Option>
       <Option value={"Asia"}>Asia</Option>
       <Option value={"Europe"}>Europe</Option>
       <Option value={"Ocenia"}>Ocenia</Option>

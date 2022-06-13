@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import CountryList from "./components/CountryList";
+import DetailedView from "./components/DetailedView";
 import Header from "./components/Header";
 import SearchForm from "./components/SearchForm";
 
@@ -54,18 +55,22 @@ function App() {
       <AppWrapper>
         <Header theme={theme} toggleTheme={toggleTheme} />
         <Main>
-          <>
-            <SearchForm
-              query={query}
-              setQuery={setQuery}
-              setRegion={setRegion}
-            />
-            <CountryList
-              country={query}
-              region={region}
-              setCountry={setCountry}
-            />
-          </>
+          {!country ? (
+            <>
+              <SearchForm
+                query={query}
+                setQuery={setQuery}
+                setRegion={setRegion}
+              />
+              <CountryList
+                country={query}
+                region={region}
+                setCountry={setCountry}
+              />
+            </>
+          ) : (
+            <DetailedView country={country} setCountry={setCountry} />
+          )}
         </Main>
       </AppWrapper>
     </ThemeProvider>
